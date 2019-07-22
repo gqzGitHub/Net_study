@@ -17,7 +17,7 @@ import java.net.Socket;
  * 3、操作：输入输出流操作
  * 4、释放资源
  */
-public class Server {
+public class TCPServer {
 	public static void main(String[] args) throws IOException {
 		System.out.println("=====server=====");
 		// 1、指定端口号 使用ServerSocket创建服务器

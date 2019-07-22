@@ -17,7 +17,7 @@ import java.net.Socket;
  * 3、操作：输入输出流操作
  * 4、释放资源
  */
-public class Client {
+public class TCPClient {
 	public static void main(String[] args) throws IOException {
 		System.out.println("=====client=====");
 		//1、建立面向连接：使用Socket创建客户端 （服务器地址和端口） 
