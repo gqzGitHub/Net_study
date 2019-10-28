@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}+'-百度云搜索引擎'"></title>
+    <meta name="description" content="百度云资源搜索网站,百度网盘资源搜索,百度云搜索引擎，百度云开源搜索引擎引擎" />
+    <meta name="keywords" content="百度云搜索,百度网盘搜索,百度云资源搜索,百度网盘资源搜索,百度云搜索引擎,百度云网盘搜索引擎" />
+    <link rel="stylesheet" href="/static/bootstrap3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/bootstrap3/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/static/css/css.css">
+    <script src="/static/bootstrap3/js/jquery-1.11.2.min.js"></script>
+    <script src="/static/bootstrap3/js/bootstrap.min.js"></script>
+    <script src="/static/js/common.js"></script>
+
+</head>
+<body>
+    <div class="header_top" th:include="common/head::#h" />
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12" align="center" style="padding-top: 100px;padding-bottom: 20px" >
+                <a href="/"><img src="/static/images/logo.png" alt="百度云搜索引擎"></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6" align="center" style="padding-top: 0px;">
+                    <div class="input-group">
+                        <input autocomplete="off" type="text" th:value="${q}" id="q" name="q" class="form-control input-lg"  placeholder="请输入您想要搜索的资源" onkeydown="if(event.keyCode==13) submitData()"><span class="input-group-addon btn btn-info" id="search" onclick="submitData()">搜索一下</span>
+                    </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <div class="w650" style="padding-top: 10px">
+            <ul>
+                <li><font color="red">热门搜索：</font></li>
+                <li th:each="hotSearch:${application.hotSearchList}">
+                    <a th:href="'/search?q='+${hotSearch.name}" role="button" th:text="${hotSearch.name}"></a>
+                </li>
+            </ul>
+        </div>
+
+        <div style="padding-top: 200px;padding-bottom: 30px" th:include="common/foot::#f" />
+
+
+    </div>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    $(function(){
+
+        $("#q").focus();
+
+    });
+</script>

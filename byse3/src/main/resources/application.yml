@@ -1,0 +1,26 @@
+server:
+    port: 80
+    servlet:
+        context-path: /
+    tomcat:
+        uri-encoding: utf-8
+
+
+spring:
+    #配置数据库DB
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://49.235.210.101:3306/bdyun_search?useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: ganquanzhong
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        thymeleaf:
+            cache: false
+    #配置elasticsearch
+    data:
+        elasticsearch:
+            cluster-nodes: 49.235.210.101:9300

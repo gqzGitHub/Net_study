@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}+'-百度云搜索引擎'"></title>
+    <meta name="description" th:content="${title}" />
+    <meta name="keywords" th:content="${title}" />
+    <link rel="stylesheet" href="/static/bootstrap3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/bootstrap3/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/static/css/css.css">
+    <script src="/static/bootstrap3/js/jquery-1.11.2.min.js"></script>
+    <script src="/static/bootstrap3/js/bootstrap.min.js"></script>
+    <script src="/static/js/clipboard.min.js"></script>
+    <script src="/static/js/common.js"></script>
+    <script type="text/javascript">
+        $(function(){
+
+            var clipboard = new ClipboardJS('.btn');
+
+            clipboard.on('success', function(e) {
+                alert("复制成功！");
+                e.clearSelection();
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+<div class="header_top" th:include="common/head::#h" />
+
+<div class="container">
+
+    <div class="row"  th:include="common/search::#s" style="padding-top: 30px;"/>
+
+    <div th:include="common/nav::#n" />
+
+    <div class="row" style="padding-top: 10px;">
+        <div class="col-md-12">
+            <div class="data_list">
+                <div class="data_list_title">
+                    <img src="/static/images/search_icon.png"/>
+                    搜索&nbsp;<font color="red" th:text="${q}"></font>&nbsp;的结果 &nbsp;(总共搜索到&nbsp;<font color="red" th:text="${resultTotal}"></font>&nbsp;条记录)
+                </div>
+
+
+                <div class="search">
+                    <div th:if="${resultTotal==0}" align="center" style="padding-top: 20px" >未查询到结果，请换个关键字试试看！</div>
+                    <ul>
+                        <li th:each="article:${articleList}" style="margin-bottom: 20px">
+                            <span class="title"><a th:href="'/article/'+${article.id}" target="_blank" th:title="${article.name}" th:utext="${article.name}"></a></span>
+                            <span class="summary" th:utext="'内容摘要:'+${article.content}+'...'"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div align="left" style="padding-left: 40px">
+                    <nav>
+                        <ul class="pagination pagination-sm" th:utext="${pageCode}">
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div style="padding-top: 0px;padding-bottom: 30px" th:include="common/foot::#f" />
+</div>
+
+
+</body>
+</html>

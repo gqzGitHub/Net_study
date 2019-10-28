@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>添加资源</title>
+<link rel="stylesheet" href="/static/layui/css/layui.css"></link>
+<style type="text/css">
+
+	table tr td{
+		padding: 10px;
+	}
+
+</style>
+</head>
+<body>
+<div style="padding: 20px">
+	<form method="post">
+		<table>
+			<tr>
+				<td>百度云分享地址：</td>
+				<td><input type="text" autocomplete="off" id="shareUrl" name="shareUrl" class="layui-input" style="width: 400px"/></td>
+			</tr>
+			<tr>
+				<td>百度云分享密码：</td>
+				<td><input type="text" autocomplete="off" id="password" name="password" class="layui-input" style="width: 100px;display: inline;"/>&nbsp;&nbsp;<span>(无密码无需输入)</span></td>
+			</tr>
+			<tr>
+				<td><button class="layui-btn" onclick="submitData();return false;">提交</button></td>
+				<td><font id="errorInfo" color="red"></font></td>
+			</tr>
+		</table>
+	</form>
+</div>
+<script src="/static/bootstrap3/js/jquery-1.11.2.min.js"></script>
+<script src="/static/js/common.js"></script>
+<script type="text/javascript">
+
+	function submitData(){
+		var shareUrl=$("#shareUrl").val().trim();
+		var password=$("#password").val().trim();
+		if(shareUrl=="") {
+	　　　　   $("#errorInfo").text("请输入百度云分享地址！");
+			  $("#shareUrl").focus();
+	　　　　　　return false;
+	　　　} 
+
+		$.post("/admin/article/add",{shareUrl:shareUrl,password:password},function(result){
+			  if(result.success){
+				  alert("添加成功！");
+				  parent.reloadPage();
+			  }else{
+				  $("#errorInfo").text(result.errorInfo);
+			  }
+		},"json");
+
+	}
+
+
+</script>
+</body>
+</html>
