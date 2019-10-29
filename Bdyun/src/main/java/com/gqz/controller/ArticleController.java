@@ -18,9 +18,7 @@ import java.util.List;
 
 /**
  * 帖子控制器
- * @author java1234_小锋
- * @site www.gqz.com
- * @company Java知识分享网
+ * @site www.ganquanzhong.top
  * @create 2018-12-14 下午 4:37
  */
 @Controller

@@ -27,10 +27,11 @@ public class GenTreeInfo {
      */
     public void gen(Article article){
         /**
+         * 没有驱动的https://npm.taobao.org/mirrors/chromedriver/  下载对应google chrome版本
          * 使用google驱动  默认安装在用户的路劲下面  使用自己对应的应用位置
          */
         //System.setProperty("webdriver.chrome.driver","C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
         WebDriver driver=new ChromeDriver();
         driver.get(article.getShare_url());
 

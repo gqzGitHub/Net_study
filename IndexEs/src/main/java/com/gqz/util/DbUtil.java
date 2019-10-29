@@ -31,7 +31,11 @@ public class DbUtil {
 			con.close();
 		}
 	}
-	
+
+	/**
+	 * 测试数据库连接
+	 */
+
 	public static void main(String[] args) {
 		DbUtil dbUtil=new DbUtil();
 		try {

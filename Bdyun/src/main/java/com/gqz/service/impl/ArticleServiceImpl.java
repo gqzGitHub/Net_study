@@ -152,7 +152,7 @@ public class ArticleServiceImpl implements ArticleService {
         NativeSearchQuery nativeSearchQuery=new NativeSearchQueryBuilder()
                 .withQuery(boolQueryBuilder)
                 .withPageable(pageRequest)
-                 .withIndices("test2")
+                 .withIndices("test2")  //ES 的index索引
                 .withHighlightFields(new HighlightBuilder.Field("content"),new HighlightBuilder.Field("name"))
                 .withHighlightBuilder(new HighlightBuilder().preTags("<font style='color:red'>").postTags("</font>")).build();
 

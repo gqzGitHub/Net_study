@@ -23,4 +23,7 @@ spring:
     #配置elasticsearch
     data:
         elasticsearch:
+            cluster-name: elasticsearch
             cluster-nodes: 49.235.210.101:9300
+
+

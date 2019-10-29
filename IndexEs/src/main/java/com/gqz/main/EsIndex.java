@@ -4,6 +4,7 @@ import com.gqz.util.DbUtil;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
@@ -30,18 +31,23 @@ public class EsIndex {
 
         while(true){
             DbUtil dbUtil=new DbUtil();
+            //定义sql
             String sql="SELECT id,name,content FROM t_article WHERE state=1 AND is_index=FALSE limit 0,100";
             Connection con =null;
             // 创建client
             TransportClient client=null;
             try {
+                //获取数据库连接
                 con = dbUtil.getCon();
 
                 // 创建client
                 client = new PreBuiltTransportClient(Settings.EMPTY)
-                        .addTransportAddresses(new TransportAddress(InetAddress.getByName(host), port));
+                        //.addTransportAddresses(new TransportAddress(InetAddress.getByName(host), port));
+                        .addTransportAddresses(new InetSocketTransportAddress(InetAddress.getByName(host), port));
+                //预编译sql并且执行
                 PreparedStatement pstmt = con.prepareStatement(sql);
                 ResultSet rs=pstmt.executeQuery();
+
                 while (rs.next()){
                     String id = rs.getString("id");
                     String name = rs.getString("name");
@@ -54,15 +60,19 @@ public class EsIndex {
                             .setSource(map)
                             .get();
                     int status = indexRequestBuilder.status().getStatus();
+
                     if(status==201){
                         System.out.println("【执行成功】=="+name);
                     }else{
                         System.out.println("【执行失败失败】==id:"+id);
                     }
+
+                    //ES索引完了就update资源中的article
                     String updateSql="update t_article set is_index=true where id="+id;
                     PreparedStatement updatePstmt = con.prepareStatement(updateSql);
                     updatePstmt.executeUpdate();
                 }
+                //
                 String countSql="select count(id) as total from t_article where state=1 AND is_index=FALSE";
                 PreparedStatement countPstmt = con.prepareStatement(countSql);
                 ResultSet resultSet = countPstmt.executeQuery();

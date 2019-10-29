@@ -6,9 +6,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 /**
  * 帖子Repository接口
- * @author java1234_小锋
- * @site www.gqz.com
- * @company Java知识分享网
+ * @site www.ganquanzhong.top
  * @create 2018-12-14 下午 3:41
  */
 public interface ArticleRepository extends JpaRepository<Article,Integer>, JpaSpecificationExecutor<Article> {

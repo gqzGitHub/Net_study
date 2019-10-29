@@ -57,7 +57,7 @@ public class IndexController {
 
     /**
      * 分词查询
-     * @param q
+     * @param q  搜索内容
      * @param page
      * @return
      * @throws Exception
@@ -66,15 +66,18 @@ public class IndexController {
     public ModelAndView search(@RequestParam(value="q",required=false) String q, @RequestParam(value="page",required=false) String page)throws Exception{
         ModelAndView mav=new ModelAndView();
         if(StringUtil.isEmpty(q)){
+            //如果搜索内容为空则去首页
             mav.setViewName("index");
             mav.addObject("title","首页");
             return mav;
         }
-        int pageSize=10;
+        int pageSize=10; //页面大小
         if(StringUtil.isEmpty(page)){
+            //默认page为1
             page="1";
         }
         mav.addObject("q", q);
+        //检索资源
         List<ArticleInfo> articleInfoList = articleService.search(Integer.parseInt(page), pageSize, q);
 
         Long total=articleService.searchCount(q);
