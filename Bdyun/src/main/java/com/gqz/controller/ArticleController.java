@@ -17,7 +17,7 @@ import java.util.List;
 
 
 /**
- * 帖子控制器
+ * ArticleController
  * @site www.ganquanzhong.top
  * @create 2018-12-14 下午 4:37
  */

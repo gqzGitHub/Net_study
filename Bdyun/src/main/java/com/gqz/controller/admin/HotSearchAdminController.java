@@ -16,9 +16,8 @@ import java.util.Map;
 
 /**
  * 后台管理-热门搜索标签控制器
- * @author java1234_小锋
- * @site www.gqz.com
- * @company Java知识分享网
+ * @author ganquanzhong
+ * @site www.ganquanzhong.top
  * @create 2019-01-08 下午 7:05
  */
 @RestController

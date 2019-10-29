@@ -11,6 +11,10 @@ import java.io.Serializable;
  * @company Java知识分享网
  * @create 2018-12-31 下午 2:15
  */
+
+/*
+    @Document 标注索引，类型
+ */
 @Document(indexName = "test2",type = "my")
 public class ArticleInfo implements Serializable {
 

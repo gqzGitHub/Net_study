@@ -18,9 +18,8 @@ import java.util.List;
  *      说明：通过实现ServletContextListener, ApplicationContextAware接口
  *          setApplicationContext方法自动注入applicationContext
  *
- * @author java1234_小锋
+ * @author ganquanzhong
  * @site www.gqz.com
- * @company Java知识分享网
  * @create 2018-12-02 下午 2:49
  */
 @Component

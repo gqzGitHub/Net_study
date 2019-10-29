@@ -16,9 +16,8 @@ import java.util.Map;
 
 /**
  * 后台管理-帖子控制器
- * @author java1234_小锋
- * @site www.gqz.com
- * @company Java知识分享网
+ * @author ganquanzhong
+ * @site www.ganquanzhong.top
  * @create 2019-01-09 下午 10:14
  */
 @RestController
